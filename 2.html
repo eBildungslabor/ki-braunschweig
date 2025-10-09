@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="simple.css" rel="stylesheet">
+    <title>Kontra-intuitive Zugänge zu KI</title>
+  </head>
+  <body>
+  <header>
+    <h1>Zugänge zu KI über kontra-intuitive Nutzung</h1>
+    <p>Praktische Impulse zum Ausprobieren</p>
+    <nav>
+      <ul>
+        <li><a href="index.html">Start</a></li>
+        <li><a href="kreativ.html">Kreativität entwickeln</a></li>
+        <li><a href="lernkontext.html">Mit Lernkontext-Dateien arbeiten</a></li>
+        <li><a href="modellierung.html">Modellierung nutzen</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <h2>Ergebnis: Kopfstand-Methode</h2>
+    <p>Unten findest du deinen individuell generierten Prompt. Kopiere ihn und nutze ihn in einem KI-Sprachmodell deiner Wahl:</p>
+    <pre id="resultText"></pre>
+    <button id="copyButton">Prompt kopieren</button>
+    <p>Solltest du bislang noch über keinerlei Zugang zu einem KI-Sprachmodell verfügen, kannst du das offene Angebot von <a href="https://duck.ai">duck.ai</a> nutzen.</p>
+  </main>
+  <footer>
+    <p>Erstellt von Nele Hirsch (eBildungslabor) für die Schulleiter*innentagung am 8./9. Oktober in Hamburg.
+    Lizenz: <a href="https://creativecommons.org/publicdomain/zero/1.0/deed.de">CC0 1.0</a></p>
+  </footer>
+  
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const frage = urlParams.get('frage');
+    
+    const prompt = `Nutze die Kopfstand-Methode, um mir zu helfen kreative Ideen zur folgenden Herausforderung zu entwickeln:
+"${frage}"
+Anstatt dass du mir sinnvolle Ideen vorschlägst, versuchst du dir möglichst dumme Ideen zu überlegen (= Kopfstand). Es sollen Ideen sein, mit denen meine Herausforderung garantiert nicht bewältigt werden kann.
+Du nennst mir jeweils immer eine Kopfstand-Idee und fragst dann, ob mir davon ausgehend bereits eine richtige Idee einfällt oder ob du die Idee noch dümmer machen sollst (= deine genannte Kopfstand-Idee weiter verschlimmern) oder noch eine andere Kopfstand-Idee (= einen anderen Aspekt aufgreifen, was gar keine Hilfe wäre) nennen sollst.
+Du generierst so lange immer eine nach der anderen dümmstmögliche Kopfstand-Ideen, bis ich eine für mich sinnvolle Idee zur Bewältigung meiner Herausforderung gefunden habe. Starte jetzt mit der ersten Kopfstand-Idee zu meiner genannten Herausforderung.`;
+    
+    document.getElementById('resultText').textContent = prompt;
+    
+    document.getElementById('copyButton').addEventListener('click', function() {
+      navigator.clipboard.writeText(prompt).then(function() {
+        alert('Prompt wurde in die Zwischenablage kopiert!');
+      });
+    });
+  </script>
+  </body>
+</html>
