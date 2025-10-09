@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="de">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="simple.css" rel="stylesheet">
+    <title>Kontra-intuitive Zugänge zu KI</title>
+  </head>
+  <body>
+  <header>
+    <h1>Zugänge zu KI über kontra-intuitive Nutzung</h1>
+    <p>Praktische Impulse zum Ausprobieren</p>
+    <nav>
+      <ul>
+        <li><a href="index.html">Start</a></li>
+        <li><a href="kreativ.html">Kreativität entwickeln</a></li>
+        <li><a href="lernkontext.html">Mit Lernkontext-Dateien arbeiten</a></li>
+        <li><a href="modellierung.html">Modellierung nutzen</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <h2>Ergebnis: Brainstorming-Spiel</h2>
+    <p>Unten findest du deinen individuell generierten Prompt. Kopiere ihn und nutze ihn in einem KI-Sprachmodell deiner Wahl:</p>
+    <pre id="resultText"></pre>
+    <button id="copyButton">Prompt kopieren</button>
+    <p>Solltest du bislang noch über keinerlei Zugang zu einem KI-Sprachmodell verfügen, kannst du das offene Angebot von <a href="https://duck.ai">duck.ai</a> nutzen.</p>
+  </main>
+  <footer>
+    <p>Erstellt von Nele Hirsch (eBildungslabor) für die Schulleiter*innentagung am 8./9. Oktober in Hamburg.
+    Lizenz: <a href="https://creativecommons.org/publicdomain/zero/1.0/deed.de">CC0 1.0</a></p>
+  </footer>
+  
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const frage = urlParams.get('frage');
+    
+    const prompt = `Wir spielen ein kreatives Ideen-PingPong.
+Die Herausforderung lautet: ${frage}.
+Du beginnst, indem du mich bittest, eine erste Idee in Stichpunkten zu nennen.
+Erst danach nennst du selbst eine Idee. Deine Idee muss unterschiedlich zu meiner Idee sein und einen neuen Aspekt aufgreifen.
+Dann forderst du mich direkt zur nächsten Idee auf – und so weiter.
+Die Ideen sollen möglichst kurz, überraschend und unterschiedlich sein.
+Wiederhole den Wechsel so lange, bis ich aufhöre zu spielen.`;
+    
+    document.getElementById('resultText').textContent = prompt;
+    
+    document.getElementById('copyButton').addEventListener('click', function() {
+      navigator.clipboard.writeText(prompt).then(function() {
+        alert('Prompt wurde in die Zwischenablage kopiert!');
+      });
+    });
+  </script>
+  </body>
+</html>
